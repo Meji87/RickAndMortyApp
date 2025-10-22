@@ -15,10 +15,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+//import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+//import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.m8_eac2_ex2.R
 import com.example.m8_eac2_ex2.ui.screens.CharacterScreen
 import com.example.m8_eac2_ex2.ui.screens.CharacterViewModel
+
+enum class PantallaApp(){
+    Chracter,
+    Episode
+}
 
 @Composable
 fun AppScreen(
@@ -27,6 +35,12 @@ fun AppScreen(
 ) {
 
     val characterViewModel: CharacterViewModel = viewModel()
+
+    NavHost(
+        navController = navController,
+        startDestination = PantallaApp.Chracter.name
+    ){}
+
     CharacterScreen(
         characterUiState = characterViewModel.characterUiState,
         modifier = modifier
